@@ -1,1 +1,85 @@
-<p>dashboard works!</p>
+<app-navbar></app-navbar>
+<app-hero-section></app-hero-section>
+<div class="dashboard">
+    <div class="container">
+        <div class="mat-elevation-z8">
+            <form [formGroup]="filterForm">
+                <div class="date-block">
+                    <div class="date-block__list">
+                        <mat-form-field>
+                            <input matInput readonly [min]="minDate" [max]="maxDate" [matDatepicker]="fromDate" placeholder="From Date" formControlName="fromDate" required>
+                            <mat-datepicker-toggle matSuffix [for]="fromDate"></mat-datepicker-toggle>
+                            <mat-datepicker #fromDate></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                    <div class="date-block__list">
+                        <mat-form-field>
+                            <input matInput readonly [min]="minDate" [max]="maxDate" [matDatepicker]="toDate" placeholder="To Date" formControlName="toDate" required>
+                            <mat-datepicker-toggle matSuffix [for]="toDate"></mat-datepicker-toggle>
+                            <mat-datepicker #toDate></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                    <button type="button" class="btn btn-primary" (click)="applyFilter1()">Filter</button>
+                    <button type="button" class="btn btn-info" (click)="reset()">
+                        <fa name="retweet"></fa>
+                    </button>
+                    <button type="button" class="btn btn-success" (click)="exporter.exportTable(exportType, {fileName: 'claims'})">Excel
+                        <fa name="download"></fa>
+                    </button>
+                </div>
+            </form>
+
+            <table mat-table matTableExporter [dataSource]="dataSource" #exporter="matTableExporter" [hiddenColumns]="[0]">
+                <ng-container matColumnDef="index">
+                    <th mat-header-cell *matHeaderCellDef> No </th>
+                    <td mat-cell *matCellDef="let claim; let i = index;"> {{i+1}} </td>
+                </ng-container>
+
+                <!-- First Name Column -->
+                <ng-container matColumnDef="firstName">
+                    <th mat-header-cell *matHeaderCellDef> First name </th>
+                    <td mat-cell *matCellDef="let claim"> {{claim.principal.firstName | titlecase}} </td>
+                </ng-container>
+
+                <!-- Last Name Column -->
+                <ng-container matColumnDef="lastName">
+                    <th mat-header-cell *matHeaderCellDef> Last name </th>
+                    <td mat-cell *matCellDef="let claim"> {{claim.principal.lastName | titlecase}} </td>
+                </ng-container>
+
+                <!-- Phone column -->
+                <ng-container matColumnDef="mobileNumber">
+                    <th mat-header-cell *matHeaderCellDef> Phone Number </th>
+                    <td mat-cell *matCellDef="let claim"> {{claim.principal.mobileNumber}} </td>
+                </ng-container>
+
+                <!-- National ID Column -->
+                <ng-container matColumnDef="idNumber">
+                    <th mat-header-cell *matHeaderCellDef> National ID </th>
+                    <td mat-cell *matCellDef="let claim"> {{claim.principal.idNumber}} </td>
+                </ng-container>
+
+                <!-- Status Column -->
+                <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef> Status </th>
+                    <td mat-cell *matCellDef="let claim"> {{claim.status | titlecase}} </td>
+                </ng-container>
+
+                <!-- Created At Column -->
+                <ng-container matColumnDef="createdAt">
+                    <th mat-header-cell *matHeaderCellDef> Created At </th>
+                    <td mat-cell *matCellDef="let claim"> {{claim.createdAt | date : 'shortDate'}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="getRecord(row.id)"></tr>
+            </table>
+            <div class="d-flex justify-content-center" *ngIf="isLoading">
+                <mat-spinner diameter="20" style="margin-top: 20px;"></mat-spinner>
+            </div>
+            <mat-paginator [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons></mat-paginator>
+        </div>
+    </div>
+
+</div>
+<app-footer></app-footer>
