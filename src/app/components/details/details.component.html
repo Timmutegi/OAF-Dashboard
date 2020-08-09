@@ -1,1 +1,75 @@
-<p>details works!</p>
+<app-navbar></app-navbar>
+<app-hero-section></app-hero-section>
+<div class="details">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-4">
+                <h4>Claim</h4>
+                <p>Created At: {{claim?.createdAt | date: 'shortDate'}}</p>
+                <p>Status: {{claim?.status | titlecase}}</p>
+                <p>Principal: {{claim?.claimBeneficiaryFuneral}}</p>
+                <p>Beneficiary: {{claim?.claimPrincipalFuneral}}</p>
+            </div>
+            <div class="col-md-4">
+                <h4>Principal</h4>
+                <p>Firstname: {{claim?.principal.firstName}}</p>
+                <p>Lastname: {{claim?.principal.lastName}}</p>
+                <p>ID Number: {{claim?.principal.idNumber}}</p>
+                <p>Phone: {{claim?.principal.mobileNumber}}</p>
+                <p>Location: {{claim?.principal.location}}</p>
+            </div>
+            <div class="col-md-4">
+                <h4>Beneficiary</h4>
+                <p>Firstname: {{claim?.beneficiary.firstName}}</p>
+                <p>Lastname: {{claim?.beneficiary.lastName}}</p>
+                <p>ID Number: {{claim?.beneficiary.idNumber}}</p>
+                <p>Phone: {{claim?.beneficiary.mobileNumber}}</p>
+                <p>Location: {{claim?.beneficiary.location}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="bluewave">
+                    <h4>Bluewave</h4>
+                    <div class="review">
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Comment</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+                        <button class="btn btn-info">Review</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="cic">
+                    <h4>CIC Approve</h4>
+                    <div class="approve">
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Comment</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+                        <button class="btn btn-success">Approve</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="cic">
+                    <h4>CIC Reject</h4>
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Comment</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+                    <button class="btn btn-danger">Reject</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-10">
+                <!-- <pdf-viewer src="{{claim?.file}}" style="display: block;"></pdf-viewer> -->
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
