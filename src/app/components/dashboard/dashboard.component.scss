@@ -22,7 +22,6 @@
             }
         }
         .mat-elevation-z8 {
-            overflow-x: scroll;
             margin-top: 20px;
             margin-bottom: 50px;
             mat-form-field {
@@ -30,24 +29,12 @@
                 margin-top: 10px;
             }
             table {
-                // overflow-x: scroll;
                 width: 100%;
+                fa {
+                    color: #0073bd;
+                    cursor: pointer;
+                }
             }
-            // .mat-cell,
-            // .mat-header-cell {
-            //     word-wrap: initial;
-            //     display: table-cell;
-            //     padding: 0px 10px;
-            //     line-break: unset;
-            //     width: 100%;
-            //     white-space: nowrap;
-            //     overflow: hidden;
-            //     vertical-align: middle;
-            // }
-            // .mat-row,
-            // .mat-header-row {
-            //     display: table-row;
-            // }
         }
     }
 }

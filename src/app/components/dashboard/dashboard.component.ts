@@ -30,7 +30,8 @@ export class DashboardComponent implements OnInit {
     'mobileNumber',
     'idNumber',
     'status',
-    'createdAt'
+    'createdAt',
+    'Actions'
   ];
 
   filterForm = new FormGroup({
