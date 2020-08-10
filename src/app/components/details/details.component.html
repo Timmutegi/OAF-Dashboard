@@ -1,37 +1,50 @@
 <app-navbar></app-navbar>
 <app-hero-section></app-hero-section>
 <div class="details">
-    <div class="container">
-
+    <div class="d-flex justify-content-center align-items-center" *ngIf="isLoading">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <div class="container" *ngIf="!isLoading">
         <div class="row">
             <div class="col-md-4">
                 <h4>Claim</h4>
-                <p>Created At: {{claim?.createdAt | date: 'shortDate'}}</p>
-                <p>Status: {{claim?.status | titlecase}}</p>
-                <p>Principal: {{claim?.claimBeneficiaryFuneral}}</p>
-                <p>Beneficiary: {{claim?.claimPrincipalFuneral}}</p>
+                <p><span>Created At: </span> {{claim?.createdAt | date: 'shortDate'}}</p>
+                <p><span>Status: </span>{{claim?.status | titlecase}}</p>
+                <p><span>Principal: </span> {{claim?.claimBeneficiaryFuneral}}</p>
+                <p><span>Beneficiary: </span> {{claim?.claimPrincipalFuneral}}</p>
             </div>
             <div class="col-md-4">
                 <h4>Principal</h4>
-                <p>Firstname: {{claim?.principal.firstName}}</p>
-                <p>Lastname: {{claim?.principal.lastName}}</p>
-                <p>ID Number: {{claim?.principal.idNumber}}</p>
-                <p>Phone: {{claim?.principal.mobileNumber}}</p>
-                <p>Location: {{claim?.principal.location}}</p>
+                <p><span>Firstname: </span> {{claim?.principal.firstName}}</p>
+                <p><span>Lastname: </span> {{claim?.principal.lastName}}</p>
+                <p><span>ID Number: </span> {{claim?.principal.idNumber}}</p>
+                <p><span>Phone: </span> {{claim?.principal.mobileNumber}}</p>
+                <p><span>Location: </span> {{claim?.principal.location}}</p>
             </div>
             <div class="col-md-4">
                 <h4>Beneficiary</h4>
-                <p>Firstname: {{claim?.beneficiary.firstName}}</p>
-                <p>Lastname: {{claim?.beneficiary.lastName}}</p>
-                <p>ID Number: {{claim?.beneficiary.idNumber}}</p>
-                <p>Phone: {{claim?.beneficiary.mobileNumber}}</p>
-                <p>Location: {{claim?.beneficiary.location}}</p>
+                <p><span>Firstname: </span> {{claim?.beneficiary.firstName}}</p>
+                <p><span>Lastname: </span> {{claim?.beneficiary.lastName}}</p>
+                <p><span>ID Number: </span> {{claim?.beneficiary.idNumber}}</p>
+                <p><span>Mobile Number: </span> {{claim?.beneficiary.mobileNumber}}</p>
+                <p><span>Location: </span> {{claim?.beneficiary.location}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <h5>Checklist</h5>
+                <ul>
+                    <li>Principal ID Photo Front</li>
+                    <li>Principal ID Photo Back</li>
+                </ul>
             </div>
         </div>
         <div class="row">
             <div class="col-md-4">
                 <div class="bluewave">
-                    <h4>Bluewave</h4>
+                    <h5>Bluewave</h5>
                     <div class="review">
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">Comment</label>
@@ -43,7 +56,7 @@
             </div>
             <div class="col-md-4">
                 <div class="cic">
-                    <h4>CIC Approve</h4>
+                    <h5>CIC Approve</h5>
                     <div class="approve">
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">Comment</label>
@@ -55,7 +68,7 @@
             </div>
             <div class="col-md-4">
                 <div class="cic">
-                    <h4>CIC Reject</h4>
+                    <h5>CIC Reject</h5>
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Comment</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>

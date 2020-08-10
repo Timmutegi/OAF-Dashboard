@@ -11,7 +11,6 @@ export class DetailsComponent implements OnInit {
   ID: string;
   claim: any;
   isLoading = true;
-  pdfSrc: string;
 
   constructor(private api: ApiService, private activatedRoute: ActivatedRoute) { }
 
@@ -23,9 +22,8 @@ export class DetailsComponent implements OnInit {
   getClaim() {
     this.api.get('/Claims/' + this.ID).subscribe(
       res => {
-        console.log(res);
         this.claim = res;
-        this.pdfSrc = res.file;
+        this.isLoading = false;
       }
     );
   }

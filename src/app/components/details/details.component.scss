@@ -1,5 +1,8 @@
  .details {
      min-height: 80vh;
+     .d-flex {
+         height: 60vh;
+     }
      .container {
          margin-top: 20px;
          margin-bottom: 50px;
@@ -8,6 +11,7 @@
          }
          h4 {
              font-family: 'Montserrat', sans-serif;
+             color: #0073bd;
          }
          .row {
              margin-top: 50px;
@@ -16,6 +20,12 @@
              }
              .col-md-4 {
                  font-family: 'Lato', sans-serif;
+                 p {
+                     font-size: 15px;
+                 }
+                 span {
+                     font-weight: bold;
+                 }
                  label {
                      font-size: 13px;
                  }
