@@ -23,7 +23,7 @@ export class ApiService {
     return this.http.get<any>(this.baseUrl + endpoint, this.httpOptions);
   }
 
-  post(endpoint: string, data: FormData) {
+  post(endpoint: string, data: JSON) {
     return this.http.post<any>(this.baseUrl + endpoint, data, this.httpOptions);
   }
 }
