@@ -2,6 +2,62 @@
 <app-hero-section></app-hero-section>
 <div class="dashboard">
     <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-muted">Total Claims</h5>
+                        <hr>
+                        <p class="card-text text-right">{{total}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-muted">Pending Claims</h5>
+                        <hr>
+                        <p class="card-text text-right"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-muted">Reviewed Claims</h5>
+                        <hr>
+                        <p class="card-text text-right"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-muted">Approved Claims</h5>
+                        <hr>
+                        <p class="card-text text-right"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-muted">Rejected Claims</h5>
+                        <hr>
+                        <p class="card-text text-right"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-muted">Paid Claims</h5>
+                        <hr>
+                        <p class="card-text text-right"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="mat-elevation-z8">
             <form [formGroup]="filterForm">
                 <div class="date-block">

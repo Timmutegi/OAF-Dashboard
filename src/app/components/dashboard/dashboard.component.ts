@@ -22,6 +22,7 @@ export class DashboardComponent implements OnInit {
   isLoading = true;
   minDate: Date;
   maxDate: Date;
+  total: number;
   dataSource = new MatTableDataSource(ELEMENT_DATA);
   displayedColumns: string[] = [
     'index',
@@ -56,6 +57,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.getClaims();
+    this.totalClaims();
     this.maxDate = new Date();
     this.minDate = new Date(2020, 1, 8);
     this.dataSource.filterPredicate = (data, filter) => {
@@ -75,6 +77,23 @@ export class DashboardComponent implements OnInit {
         });
         this.isLoading = false;
         this.dataSource.data = res;
+      }
+    );
+  }
+
+  totalClaims() {
+    this.api.get('/claims/count').subscribe(
+      res => {
+        console.log(res);
+        this.total = res.count;
+      }
+    );
+  }
+
+  pendingClaims() {
+    this.api.get('/claims/count').subscribe(
+      res => {
+        console.log(res);
       }
     );
   }
