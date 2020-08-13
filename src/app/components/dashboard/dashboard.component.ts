@@ -23,6 +23,11 @@ export class DashboardComponent implements OnInit {
   minDate: Date;
   maxDate: Date;
   total: number;
+  pending: number;
+  approved: number;
+  rejected: number;
+  reviewed: number;
+  paid: number;
   dataSource = new MatTableDataSource(ELEMENT_DATA);
   displayedColumns: string[] = [
     'index',
@@ -58,6 +63,11 @@ export class DashboardComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     this.getClaims();
     this.totalClaims();
+    this.pendingClaims();
+    this.approvedClaims();
+    this.rejectedClaims();
+    this.reviewedClaims();
+    this.paidClaims();
     this.maxDate = new Date();
     this.minDate = new Date(2020, 1, 8);
     this.dataSource.filterPredicate = (data, filter) => {
@@ -71,7 +81,7 @@ export class DashboardComponent implements OnInit {
   getClaims() {
     this.api.get('/Claims').subscribe(
       res => {
-        console.log(res);
+        // console.log(res);
         res.forEach((element: { createdAt: string | number | Date; }) => {
           element.createdAt = new Date(element.createdAt);
         });
@@ -84,18 +94,52 @@ export class DashboardComponent implements OnInit {
   totalClaims() {
     this.api.get('/claims/count').subscribe(
       res => {
-        console.log(res);
+        // console.log(res);
         this.total = res.count;
       }
     );
   }
 
   pendingClaims() {
-    this.api.get('/claims/count').subscribe(
+    this.api.get('/claims?filter={"where":{"status":"PENDING"}}').subscribe(
       res => {
-        console.log(res);
+        this.pending = res.length;
       }
     );
+  }
+
+  approvedClaims() {
+    this.api.get('/claims?filter={"where":{"status":"APPROVED"}}').subscribe(
+      res => {
+        this.approved = res.length;
+      }
+    );
+  }
+
+  rejectedClaims() {
+    this.api.get('/claims?filter={"where":{"status":"REJECTED"}}').subscribe(
+      res => {
+        this.rejected = res.length;
+      }
+    );
+  }
+
+  reviewedClaims() {
+    this.reviewed = 0;
+    // this.api.get('/claims?filter={"where":{"status":"PENDING"}}').subscribe(
+    //   res => {
+    //     this.pending = res.length;
+    //   }
+    // );
+  }
+
+  paidClaims() {
+    this.paid = 0;
+    // this.api.get('/claims?filter={"where":{"status":"PENDING"}}').subscribe(
+    //   res => {
+    //     this.pending = res.length;
+    //   }
+    // );
   }
 
   applyFilter1() {
