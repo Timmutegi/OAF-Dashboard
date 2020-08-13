@@ -13,25 +13,16 @@
              font-family: 'Montserrat', sans-serif;
              color: #0073bd;
          }
+         form {
+             button {
+                 border-radius: 0px;
+                 margin-bottom: 20px;
+             }
+         }
          .row {
              margin-top: 50px;
              pdf-viewer {
                  border: 2px solid black;
-             }
-             .col-md-4 {
-                 font-family: 'Lato', sans-serif;
-                 p {
-                     font-size: 15px;
-                 }
-                 span {
-                     font-weight: bold;
-                 }
-                 label {
-                     font-size: 13px;
-                 }
-                 button {
-                     border-radius: 0px;
-                 }
              }
              .img {
                  display: flex;

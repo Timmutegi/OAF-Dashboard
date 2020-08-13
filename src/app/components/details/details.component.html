@@ -41,48 +41,39 @@
                 </ul>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="bluewave">
-                    <h5>Bluewave</h5>
-                    <div class="review">
-                        <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Comment</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                        </div>
-                        <button class="btn btn-info">Review</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="cic">
-                    <h5>CIC Approve</h5>
-                    <div class="approve">
-                        <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Comment</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                        </div>
-                        <button class="btn btn-success">Approve</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="cic">
-                    <h5>CIC Reject</h5>
-                    <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Comment</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                    </div>
-                    <button class="btn btn-danger">Reject</button>
-                </div>
-            </div>
-        </div>
+
 
         <div class="row">
             <div class="col-md-10">
                 <!-- <pdf-viewer src="{{claim?.file}}" style="display: block;"></pdf-viewer> -->
             </div>
         </div>
+
+        <form [formGroup]="claimForm">
+            <div class="form-row">
+                <div class="form-group col-md-8">
+                    <label for="bluewaveReview">Bluewave - Review</label>
+                    <textarea class="form-control" formControlName="bluewave" rows="3"></textarea>
+                </div>
+            </div>
+            <button class="btn btn-info">Review</button>
+
+            <div class="form-row">
+                <div class="form-group col-md-8">
+                    <label for="cicApprove">CIC - Approve</label>
+                    <textarea class="form-control" formControlName="cicApprove" rows="3"></textarea>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success" (click)="approveClaim()">Approve</button>
+
+            <div class="form-row">
+                <div class="form-group col-md-8">
+                    <label for="cicReject">CIC - Reject</label>
+                    <textarea class="form-control" formControlName="cicReject" rows="3"></textarea>
+                </div>
+            </div>
+            <button class="btn btn-danger" (click)="rejectClaim()">Reject</button>
+        </form>
     </div>
 </div>
 <app-footer></app-footer>
